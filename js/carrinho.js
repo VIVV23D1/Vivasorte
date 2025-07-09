@@ -15,11 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const qtyResumoElement = document.querySelector('.summary-line span:last-child');
     
     // Preço por cota do produto principal
-    const unitPrice = 1.99;
+    const unitPrice = 0.99;
     
-    // Garante o mínimo de 10 cotas no carregamento da página
-    if (parseInt(qtyInput.value) < 10) {
-        qtyInput.value = '10';
+    // Garante o mínimo de 20 cotas no carregamento da página
+    if (parseInt(qtyInput.value) < 20) {
+        qtyInput.value = '20';
         // Exibe alerta popup
         alert(mensagemAlerta);
     }
@@ -31,16 +31,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Aplica os parâmetros da URL se existirem
     if (quantidadeParam && precoParam) {
         const quantidade = parseInt(quantidadeParam);
-        if (quantidade >= 10 && quantidade <= 100) {
+        if (quantidade >= 20 && quantidade <= 100) {
             // Atualiza o campo de quantidade
             qtyInput.value = quantidade;
             
             // Atualiza o total da compra baseado no preço recebido
             totalPurchase = parseFloat(precoParam);
-        } else if (quantidade < 10) {
-            // Garante o mínimo de 10 cotas
-            qtyInput.value = 10;
-            totalPurchase = unitPrice * 10;
+        } else if (quantidade < 20) {
+            // Garante o mínimo de 20 cotas
+            qtyInput.value = 20;
+            totalPurchase = unitPrice * 20;
             
             // Exibe aviso de quantidade mínima
             if (avisoMinimo) {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     } else {
         // Caso não tenha parâmetros, usa o valor padrão
-        totalPurchase = unitPrice * parseInt(qtyInput.value || 10);
+        totalPurchase = unitPrice * parseInt(qtyInput.value || 20);
     }
     
     // Função para formatar preço
@@ -73,14 +73,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Mensagem de aviso para alertas
-    const mensagemAlerta = 'Atenção: A quantidade mínima de cotas é 10 e a máxima é 100 por compra';
+    const mensagemAlerta = 'Atenção: A quantidade mínima de cotas é 20 e a máxima é 100 por compra';
     
     // Função para validar quantidade
     function validateQty(qty) {
-        // Verifica e limita a quantidade (mínimo 10, máximo 100)
-        if (qty < 10) {
-            qtyInput.value = 10;
-            qty = 10;
+        // Verifica e limita a quantidade (mínimo 20, máximo 100)
+        if (qty < 20) {
+            qtyInput.value = 20;
+            qty = 20;
             
             // Exibe alerta popup
             alert(mensagemAlerta);
@@ -97,8 +97,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Evento de clique no botão de diminuir
     if (decrementBtn && qtyInput) {
         decrementBtn.addEventListener('click', function() {
-            let qty = parseInt(qtyInput.value || 10);
-            if (qty > 10) {
+            let qty = parseInt(qtyInput.value || 20);
+            if (qty > 20) {
                 qty--;
                 qtyInput.value = String(qty).padStart(2, '0');
                 totalPurchase = calculateTotalPurchase();
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Evento de clique no botão de aumentar
     if (incrementBtn && qtyInput) {
         incrementBtn.addEventListener('click', function() {
-            let qty = parseInt(qtyInput.value || 10);
+            let qty = parseInt(qtyInput.value || 20);
             if (qty < 100) {
                 qty++;
                 qtyInput.value = String(qty).padStart(2, '0');
@@ -142,12 +142,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // Remover caracteres não numéricos
             this.value = this.value.replace(/[^0-9]/g, '');
             
-            // Se estiver vazio, definir como 10
+            // Se estiver vazio, definir como 20
             if (this.value === '') {
-                this.value = '10';
+                this.value = '20';
             }
             
-            let qty = parseInt(this.value || 10);
+            let qty = parseInt(this.value || 20);
             qty = validateQty(qty);
             this.value = String(qty).padStart(2, '0');
             
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Evento para quando o input perde o foco
         qtyInput.addEventListener('blur', function() {
-            let qty = parseInt(this.value || 10);
+            let qty = parseInt(this.value || 20);
             qty = validateQty(qty);
             this.value = String(qty).padStart(2, '0');
             
@@ -243,14 +243,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const checkoutBtn = document.getElementById('checkout-btn');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', function() {
-            // Verificar se a quantidade é pelo menos 10
-            const quantidade = parseInt(document.querySelector('.cart-qty-input').value || 10);
+            // Verificar se a quantidade é pelo menos 20
+            const quantidade = parseInt(document.querySelector('.cart-qty-input').value || 20);
             
-            if (quantidade < 10) {
+            if (quantidade < 20) {
                 // Exibe alerta popup
                 alert(mensagemAlerta);
                 
-                qtyInput.value = 10;
+                qtyInput.value = 20;
                 totalPurchase = calculateTotalPurchase();
                 updateCartTotal();
                 return;
