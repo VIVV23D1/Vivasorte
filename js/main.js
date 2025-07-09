@@ -4,21 +4,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Função para mostrar spinner e redirecionar para o carrinho após delay
     function redirectToCart() {
         // Pega a quantidade selecionada (do seletor principal, se disponível)
-        let quantidade = 10;
+        let quantidade = 20;
         const quantidadeInput = document.querySelector('.cota-selector .quantidade-input');
         if (quantidadeInput) {
-            quantidade = parseInt(quantidadeInput.value) || 10;
+            quantidade = parseInt(quantidadeInput.value) || 20;
         }
         
         // Verifica se a quantidade está dentro dos limites
-        if (quantidade < 10 || quantidade > 100) {
+        if (quantidade < 20 || quantidade > 100) {
             // Exibe alerta popup
             alert(mensagemAlerta);
             
             // Ajusta para os limites
-            if (quantidade < 10) {
-                quantidadeInput.value = 10;
-                quantidade = 10;
+            if (quantidade < 20) {
+                quantidadeInput.value = 20;
+                quantidade = 20;
             } else if (quantidade > 100) {
                 quantidadeInput.value = 100;
                 quantidade = 100;
@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return; // Impede o redirecionamento
         }
         
-        // Calcula o preço baseado na quantidade (1.99 por cota)
-        const precoUnitario = 1.99;
+        // Calcula o preço baseado na quantidade (0.99 por cota)
+        const precoUnitario = 0.99;
         const precoTotal = quantidade * precoUnitario;
         
         // Mostra o spinner de carregamento
@@ -72,19 +72,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const incrementoBtn = document.querySelector('.cota-selector .incremento');
     const quantidadeInput = document.querySelector('.cota-selector .quantidade-input');
     const cotaPrecoElement = document.querySelector('.cota-selector .cota-preco');
-    const precoUnitario = 1.99; // Preço por cota
+    const precoUnitario = 0.99; // Preço por cota
     
     // Mensagem para os alertas
-    const mensagemAlerta = 'Atenção: A quantidade mínima de cotas é 10 e a máxima é 100 por compra.';
+    const mensagemAlerta = 'Atenção: A quantidade mínima de cotas é 20 e a máxima é 100 por compra.';
     
-    
+    // Função para validar a quantidade de cotas
+    function validarQuantidade(quantidade) {
+        if (quantidade < 20) {
+            return 20;
+        }
+        if (quantidade > 100) {
+            return 100;
+        }
+        return quantidade;
+    }
+
     if (decrementoBtn && incrementoBtn && quantidadeInput) {
         // Atualiza o texto do preço baseado na quantidade inicial
         atualizarTextoPreco();
         
+        // Define o valor inicial do input para 20
+        quantidadeInput.value = '20';
+        
         decrementoBtn.addEventListener('click', function() {
-            let quantidade = parseInt(quantidadeInput.value) || 10;
-            if (quantidade > 10) {
+            let quantidade = parseInt(quantidadeInput.value) || 20;
+            if (quantidade > 20) {
                 quantidade--;
                 quantidadeInput.value = quantidade;
                 atualizarTextoPreco();
@@ -95,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         incrementoBtn.addEventListener('click', function() {
-            let quantidade = parseInt(quantidadeInput.value) || 10;
+            let quantidade = parseInt(quantidadeInput.value) || 20;
             if (quantidade < 100) {
                 quantidade++;
                 quantidadeInput.value = quantidade;
@@ -111,9 +124,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Remove qualquer caractere que não seja número
             this.value = this.value.replace(/[^0-9]/g, '');
             
-            // Garante que sempre haja pelo menos 10 cotas
-            if (this.value === '' || parseInt(this.value) < 10) {
-                this.value = 10;
+            // Garante que sempre haja pelo menos 20 cotas
+            if (this.value === '' || parseInt(this.value) < 20) {
+                this.value = 20;
                 // Exibir alerta popup
                 alert(mensagemAlerta);
             }
@@ -130,15 +143,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Adiciona listener para quando o campo perder o foco
         quantidadeInput.addEventListener('blur', function() {
-            // Se o campo estiver vazio, define como 10
+            // Se o campo estiver vazio, define como 20
             if (this.value === '') {
-                this.value = 10;
+                this.value = 20;
                 atualizarTextoPreco();
             }
             
-            // Garante que o valor seja pelo menos 10
-            if (parseInt(this.value) < 10) {
-                this.value = 10;
+            // Garante que o valor seja pelo menos 20
+            if (parseInt(this.value) < 20) {
+                this.value = 20;
                 // Exibir alerta popup
                 alert(mensagemAlerta);
                 atualizarTextoPreco();
@@ -264,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (prevButton && nextButton && ganhadoresGrid) {
         let position = 0;
-        const cardWidth = 200; // Largura aproximada de cada card
+        const cardWidth = 100; // Largura aproximada de cada card
         const visibleCards = 5; // Número de cards visíveis por vez
         
         prevButton.addEventListener('click', function() {
