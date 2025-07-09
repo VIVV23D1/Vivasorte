@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Atualiza o total da compra baseado no preço recebido
             totalPurchase = parseFloat(precoParam);
         } else if (quantidade < 20) {
-            // Garante o mínimo de 10 cotas
+            // Garante o mínimo de 20 cotas
             qtyInput.value = 20;
             totalPurchase = unitPrice * 20;
             
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Função para validar quantidade
     function validateQty(qty) {
-        // Verifica e limita a quantidade (mínimo 10, máximo 100)
+        // Verifica e limita a quantidade (mínimo 20, máximo 150)
         if (qty < 20) {
             qtyInput.value = 20;
             qty = 20;
@@ -138,11 +138,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Evento de mudança no input de quantidade
     if (qtyInput) {
-        qtyInput.addEventListener('input', function() {
+        qtyInput.addEventListener('change', function() {
             // Remover caracteres não numéricos
             this.value = this.value.replace(/[^0-9]/g, '');
             
-            // Se estiver vazio, definir como 10
+            // Se estiver vazio, definir como 20
             if (this.value === '') {
                 this.value = '20';
             }
@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const extraQty = qty - 150;
                 qty = 150;
                 totalPurchase -= (extraQty * unitPrice);
-                alert(`O limite máximo de 150 cotas foi atingido. Apenas ${quantity - extraQty} cotas foram adicionadas.`);
+                alert(`O limite máximo de 100 cotas foi atingido. Apenas ${quantity - extraQty} cotas foram adicionadas.`);
                 
                 // Exibe mensagem de aviso para máximo
                 if (avisoMinimo) {
