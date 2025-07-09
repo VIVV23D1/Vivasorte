@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Evento de mudança no input de quantidade
     if (qtyInput) {
-        qtyInput.addEventListener('input', function() {
+        qtyInput.addEventListener('change', function() {
             // Remover caracteres não numéricos
             this.value = this.value.replace(/[^0-9]/g, '');
             
