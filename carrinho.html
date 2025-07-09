@@ -54,7 +54,7 @@
             <div class="cart-item-date">
                 <strong>13/07</strong>
                 <span>dom.</span>
-                <span>10:30</span>
+                <span>19:30</span>
             </div>
             <!-- Botão de remover item ocultado conforme solicitação -->
         </div>
@@ -147,11 +147,11 @@
             <div class="summary-content">
                 <div class="summary-line">
                     <span>Quantidade títulos</span>
-                    <span>05</span>
+                    <span id="summary-quantity">05</span>
                 </div>
                 <div class="summary-total">
                     <span>Total a pagar</span>
-                    <span>R$ 9,95</span>
+                    <span id="summary-total">R$ 9,95</span>
                 </div>
             </div>
         </div>
@@ -214,6 +214,43 @@
 
     <script src="js/main.js"></script>
     <script src="js/carrinho.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const addChanceBtns = document.querySelectorAll('.add-chance-btn');
+        const summaryQuantityEl = document.getElementById('summary-quantity');
+        const summaryTotalEl = document.getElementById('summary-total');
+
+        // Função para formatar número para moeda brasileira
+        function formatCurrency(value) {
+            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        // Função para extrair o valor numérico do texto (ex: "R$ 9,95" -> 9.95)
+        function parseCurrency(text) {
+            if (!text) return 0;
+            return parseFloat(text.replace('R$', '').replace('.', '').replace(',', '.').trim());
+        }
+
+        addChanceBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const quantityToAdd = parseInt(this.dataset.quantity, 10);
+                const priceToAdd = parseFloat(this.dataset.price);
+
+                // Atualiza a quantidade
+                const currentQuantity = parseInt(summaryQuantityEl.textContent, 10);
+                summaryQuantityEl.textContent = (currentQuantity + quantityToAdd).toString().padStart(2, '0');
+
+                // Atualiza o total
+                const currentTotal = parseCurrency(summaryTotalEl.textContent);
+                const newTotal = currentTotal + priceToAdd;
+                summaryTotalEl.textContent = formatCurrency(newTotal);
+
+
+            });
+        });
+    });
+    </script>
     
     <!-- Overlay de carregamento -->
     <div class="loading-overlay" id="loadingOverlay">
