@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Adiciona listener para entrada manual
-        quantidadeInput.addEventListener('input', function() {
+        quantidadeInput.addEventListener('change', function() {
             // Remove qualquer caractere que não seja número
             this.value = this.value.replace(/[^0-9]/g, '');
             
@@ -131,9 +131,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert(mensagemAlerta);
             }
             
-            // Limita a um máximo de 100 cotas
-            if (parseInt(this.value) > 100) {
-                this.value = 100;
+            // Limita a um máximo de 150 cotas
+            if (parseInt(this.value) > 150) {
+                this.value = 150;
                 // Exibir alerta popup
                 alert(mensagemAlerta);
             }
