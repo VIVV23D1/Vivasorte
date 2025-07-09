@@ -147,11 +147,11 @@
             <div class="summary-content">
                 <div class="summary-line">
                     <span>Quantidade títulos</span>
-                    <span id="summary-quantity">05</span>
+                    <span id="summary-quantity">10</span>
                 </div>
                 <div class="summary-total">
                     <span>Total a pagar</span>
-                    <span id="summary-total">R$ 9,95</span>
+                    <span id="summary-total">R$ 99,50</span>
                 </div>
             </div>
         </div>
@@ -217,40 +217,52 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const addChanceBtns = document.querySelectorAll('.add-chance-btn');
-        const summaryQuantityEl = document.getElementById('summary-quantity');
-        const summaryTotalEl = document.getElementById('summary-total');
+        // Adiciona um pequeno atraso para garantir que carrinho.js e suas variáveis foram carregados
+        setTimeout(() => {
+            const addChanceBtns = document.querySelectorAll('.add-chance-btn');
+            const summaryQuantityEl = document.getElementById('summary-quantity');
+            const summaryTotalEl = document.getElementById('summary-total');
 
-        // Função para formatar número para moeda brasileira
-        function formatCurrency(value) {
-            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
+            if (!summaryQuantityEl || !summaryTotalEl) {
+                console.error('Elementos do resumo da compra não foram encontrados.');
+                return;
+            }
 
-        // Função para extrair o valor numérico do texto (ex: "R$ 9,95" -> 9.95)
-        function parseCurrency(text) {
-            if (!text) return 0;
-            return parseFloat(text.replace('R$', '').replace('.', '').replace(',', '.').trim());
-        }
+            function formatCurrency(value) {
+                return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            }
 
-        addChanceBtns.forEach(btn => {
-            btn.addEventListener('click', function () {
-                const quantityToAdd = parseInt(this.dataset.quantity, 10);
-                const priceToAdd = parseFloat(this.dataset.price);
+            function parseCurrency(text) {
+                if (!text) return 0;
+                return parseFloat(text.replace('R$', '').replace('.', '').replace(',', '.').trim());
+            }
 
-                // Atualiza a quantidade
-                const currentQuantity = parseInt(summaryQuantityEl.textContent, 10);
-                summaryQuantityEl.textContent = (currentQuantity + quantityToAdd).toString().padStart(2, '0');
+            addChanceBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const quantityToAdd = parseInt(this.dataset.quantity, 10);
+                    const priceToAdd = parseFloat(this.dataset.price);
 
-                // Atualiza o total
-                const currentTotal = parseCurrency(summaryTotalEl.textContent);
-                const newTotal = currentTotal + priceToAdd;
-                summaryTotalEl.textContent = formatCurrency(newTotal);
+                    const currentQuantity = parseInt(summaryQuantityEl.textContent, 10);
+                    summaryQuantityEl.textContent = (currentQuantity + quantityToAdd).toString().padStart(2, '0');
 
+                    const currentTotal = parseCurrency(summaryTotalEl.textContent);
+                    const newTotal = currentTotal + priceToAdd;
+                    summaryTotalEl.textContent = formatCurrency(newTotal);
 
+                    if (typeof totalPurchase !== 'undefined') {
+                        totalPurchase = newTotal;
+                    } else {
+                        console.error('A variável `totalPurchase` de carrinho.js não foi encontrada.');
+                    }
+                });
             });
-        });
+        }, 100); // Atraso para garantir que carrinho.js carregue
     });
     </script>
+
+
+
+
     
     <!-- Overlay de carregamento -->
     <div class="loading-overlay" id="loadingOverlay">
