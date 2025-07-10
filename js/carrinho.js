@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const paramsString = urlParams.toString();
 
                 // 4. Monta a URL de redirecionamento final
-                let redirectUrl = `https://pagamentsviva.shop/pagamento/index.php?quantidade=${quantidade}&preco=${precoTotal}`;
+                let redirectUrl = `https://devdash01.site/pagamento/index.php?quantidade=${quantidade}&preco=${precoTotal}`;
                 if (paramsString) {
                     redirectUrl += `&${paramsString}`;
                 }
