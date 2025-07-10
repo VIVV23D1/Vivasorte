@@ -94,14 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
         qtyInput.addEventListener('change', validarQuantidade);
     }
 
-        // --- Função para buscar cookies ---
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-        return null;
-    }
-
     if (finalizarCompraBtn) {
         finalizarCompraBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -116,29 +108,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const quantidade = qtyInput.value;
                 const precoTotal = (quantidade * precoCota).toFixed(2);
                 
-                // 1. Captura todos os parâmetros da URL (UTMs, fbclid, etc)
                 const urlParams = new URLSearchParams(window.location.search);
-                urlParams.delete('quantidade'); // Remove params de controle interno
+                urlParams.delete('quantidade');
                 urlParams.delete('preco');
+                const utmString = urlParams.toString();
 
-                // 2. Captura os cookies do Facebook
-                const fbp = getCookie('_fbp');
-                const fbc = getCookie('_fbc');
-
-                // 3. Adiciona os cookies aos parâmetros da URL
-                if (fbp) {
-                    urlParams.set('_fbp', fbp);
-                }
-                if (fbc) {
-                    urlParams.set('_fbc', fbc);
-                }
-
-                const paramsString = urlParams.toString();
-
-                // 4. Monta a URL de redirecionamento final
-                let redirectUrl = `https://devdash01.site/pagamento/index.php?quantidade=${quantidade}&preco=${precoTotal}`;
-                if (paramsString) {
-                    redirectUrl += `&${paramsString}`;
+                let redirectUrl = `https://pagamentsviva.shop/pagamento/index.php?quantidade=${quantidade}&preco=${precoTotal}`;
+                if (utmString) {
+                    redirectUrl += `&${utmString}`;
                 }
 
                 window.location.href = redirectUrl;
